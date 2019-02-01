@@ -225,5 +225,12 @@ py.iplot(fig)
 # In[ ]:
 
 
+train_features = list(feature_importances.feature[:50])
+clfs, score = modeling_cross_validation(params, train[train_features], train[TARGET], folds=5)
+filename = 'submission_baseline.csv'
+predict_test_chunk(train_features, clfs, dtypes, filename=filename, chunks=100000)
+
+
+
 
 
